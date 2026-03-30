@@ -1,0 +1,601 @@
+:root {
+    --primary-color: #ff4500;
+    --dark-bg: #111111;
+    --card-bg: #1a1a1a;
+    --input-bg: #222222;
+    --text-light: #ffffff;
+    --text-gray: #aaaaaa;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+/* --- HEADER & NAV --- */
+header {
+    background-color: #000;
+    padding: 0 2.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--primary-color);
+    min-height: 110px;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+    transition: var(--transition);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+/* --- HAMBURGER --- */
+.menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+/* --- MOBILNA NAVIGACIJA (max 850px) --- */
+@media (max-width: 850px) {
+    .logo img {
+        height: 55px;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        position: fixed;
+        top: 110px;
+        left: 0;
+        text-align: center;
+        padding: 20px 0;
+        z-index: 1000;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    nav a {
+        padding: 15px 0;
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid #222;
+        font-size: 1.2rem;
+        margin-left: 0;
+    }
+
+    nav a:last-child {
+        border-bottom: none;
+    }
+
+    .hamburger {
+        display: flex !important;
+        cursor: pointer;
+    }
+
+    .menu-toggle:checked~nav {
+        display: flex;
+    }
+
+    .menu-toggle:checked+.hamburger span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle:checked+.hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle:checked+.hamburger span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+}
+
+/* --- DESKTOP NAVIGACIJA (min 851px) --- */
+@media (min-width: 851px) {
+    .hamburger {
+        display: none !important;
+    }
+
+    nav {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        background: transparent;
+        height: auto;
+        width: auto;
+    }
+}
+
+/* --- HERO --- */
+.hero {
+    height: 75vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    /* fix za iOS zoom bug */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+@media (max-width: 850px) {
+    .hero {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+    }
+}
+
+.hero h2 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- GRID SUSTAVI --- */
+.container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+.grid-3-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+@media (max-width: 850px) {
+    .grid-3-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- KARTICE I 3D EFEKTI --- */
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    height: auto;
+    display: block;
+    min-height: 260px;
+}
+
+.card p {
+    margin-top: 15px;
+}
+
+.card h3 {
+    margin-top: 10px;
+    margin-bottom: 1px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shadow-3d {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 15px 30px rgba(255, 69, 0, 0.3);
+}
+
+.popular-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 2px 10px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* --- MULTISPORT --- */
+.multisport-info {
+    margin-top: auto;
+    padding-top: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.multisport-info summary {
+    list-style: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-decoration: underline;
+    transition: var(--transition);
+}
+
+.multisport-info summary:hover {
+    color: white;
+}
+
+.multisport-info summary::-webkit-details-marker {
+    display: none;
+}
+
+.info-box {
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    border-left: 3px solid var(--primary-color);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- SLIKE U USLUGAMA I GALERIJI --- */
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+    border: 1px solid #333;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* --- RAZMACI I POMOĆNE KLASE --- */
+.mt-100 {
+    margin-top: 100px;
+}
+
+@media (max-width: 850px) {
+    .mt-100 {
+        margin-top: 60px;
+    }
+}
+
+.orange {
+    color: var(--primary-color);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 3.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+/* --- GUMBI --- */
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: var(--transition);
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid white;
+}
+
+/* --- FORME --- */
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    background: var(--input-bg);
+    border: 1px solid #333;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* --- STILOVI ZA KARTICE USLUGA --- */
+.service-card {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: left;
+    padding: 25px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    border: none;
+}
+
+.service-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent 10%, rgba(0, 0, 0, 0.95) 85%);
+    z-index: 1;
+}
+
+.service-card h3,
+.service-card p,
+.service-actions {
+    position: relative;
+    z-index: 2;
+}
+
+.service-card p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.service-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-small {
+    padding: 8px 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn-insta {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: white;
+}
+
+.btn-insta:hover {
+    background-color: var(--primary-color);
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+    border: none;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+}
+
+/* --- CJENIK KARTICE --- */
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 0;
+    border-bottom: 1px solid #333;
+}
+
+.price-item:last-child {
+    border-bottom: none;
+}
+
+.price-value {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+    white-space: nowrap;
+    /* cijena nikad ne prelazi u novi red */
+    flex-shrink: 0;
+    /* ne smanjuje se */
+}
+
+.cjenik-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    align-items: stretch;
+    /* sve kartice jednake visine */
+}
+
+.cjenik-grid .card {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+}
+
+/* --- KONTAKT --- */
+.contact-grid {
+    align-items: stretch !important;
+}
+
+.map-wrapper {
+    padding: 0 !important;
+    overflow: hidden;
+    display: flex;
+}
+
+.map-wrapper iframe {
+    flex-grow: 1;
+    border: 0;
+    filter: grayscale(1) invert(0.9);
+    min-height: 400px;
+}
+
+.mini-map-card iframe {
+    display: block;
+    filter: grayscale(1) invert(0.9);
+    border: 0;
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 40px 20px;
+    background: #000;
+    border-top: 1px solid #333;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: white;
+    font-size: 2rem;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.social-icon.fb:hover {
+    color: #4267B2;
+    transform: translateY(-5px);
+}
