@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt | Fortis Gym</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="slike/logo.png" alt="Fortis Gym Logo"></a>
+        </div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger"><span></span><span></span><span></span></label>
+        <nav>
+            <a href="index.html">Početna</a>
+            <a href="clanarine.html">Članarine</a>
+            <a href="usluge.html">Usluge</a>
+            <a href="galerija.html">Galerija</a>
+            <a href="kontakt.html">Kontakt</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="text-center section-title">KONTAKTIRAJTE <span class="orange">NAS</span></h1>
+
+        <div class="grid-layout contact-grid">
+
+            <div class="card shadow-3d" style="text-align: left;">
+                <h3 class="orange" style="margin-bottom: 20px;">PODACI</h3>
+                <p>📍 <strong>Adresa:</strong><br>Trg kralja Petra Krešimira IV,<br>10410 Velika Gorica</p>
+                <br>
+                <p>📞 <strong>Telefon:</strong><br>+385 99 425 5747</p>
+                <br>
+                <p>🕒 <strong>Radno vrijeme:</strong><br>
+                    <strong>Teretana:</strong><br>00:00 - 24:00 (Svaki dan)<br><br>
+                    <strong>Recepcija:</strong><br>
+                    Pon-pet: 7:00 - 22:00<br>
+                    Sub: 7:00 - 21:00<br>
+                    Ned: 8:00 - 21:00
+                </p>
+            </div>
+
+            <div class="card shadow-3d map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2785.8732360585644!2d16.072234!3d45.713531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDQyJzQ4LjciTiAxNsKwMDQnMTkuOCJF!5e0!3m2!1shr!2shr!4v1700000000000"
+                    width="100%" height="100%" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+
+            <div class="card shadow-3d">
+                <h3 class="orange" style="margin-bottom: 20px;">POŠALJI UPIT</h3>
+                <form action="https://formspree.io/f/TVOJ_ID_OVDJE" method="POST">
+                    <input type="text" name="ime" placeholder="Ime i prezime" required>
+                    <input type="tel" name="telefon" placeholder="Broj telefona" required>
+                    <input type="email" name="email" placeholder="E-mail adresa" required>
+                    <textarea name="poruka" rows="4" placeholder="Vaša poruka..." required></textarea>
+                    <input type="text" name="_gotcha" style="display:none">
+                    <button type="submit" class="btn" style="width: 100%;">POŠALJI</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Fortis Gym. Sva prava pridržana.</p>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/tvoj_profil" target="_blank" class="social-icon insta">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/tvoj_profil" target="_blank" class="social-icon fb">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>
